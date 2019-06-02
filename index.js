@@ -6,8 +6,24 @@ app.set("view engine", "ejs");
 app.set("views", "./pages");
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", {
+    landing: {
+      title: "Configure your UI",
+      heroImg1: "./images/2.gif",
+      heroImg2: "./images/1.gif",
+      subtitle: "The more you look the less you see",
+      keyFeatures: [
+        {
+          title: "Dynamic content",
+          content: "fantastic stuff bro",
+          icon: "fa-apple-pay"
+        }
+      ],
+      otherFeatures: []
+    }
+  });
 });
 app.use(express.static("public"));
 
-app.listen(process.env.PORT || 8228);
+const port = process.env.PORT || 8228;
+app.listen(port, () => console.log(`started on ${port}`));

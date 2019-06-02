@@ -1,0 +1,90 @@
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+}
+img {
+  height: 500px;
+  width: 500px;
+}
+h1 {
+  font-family: "Nunito";
+}
+h3 {
+  font-family: "Open Sans";
+}
+
+img.logo {
+  height: 120;
+  width: 180;
+}
+.landing {
+  height: 100%;
+  padding-top: 40px;
+}
+.top-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: stretch;
+  padding: 0 40px;
+}
+.hero {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.hero .content-container {
+  flex: 1;
+  position: relative;
+  align-self: stretch;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero .content-container:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  background: #383f5b;
+  z-index: -1;
+}
+.content-container h3 {
+  color: white;
+}
+.hero .content-container .hero-examples-container img {
+  height: 593px;
+  width: 900px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 20px 10px #00000033;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .hero .content-container .hero-examples-container img {
+    display: none;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .hero .content-container .hero-examples-container img {
+    height: 494px;
+    width: 750px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .hero .content-container .hero-examples-container img {
+    height: 494px;
+    width: 750px;
+  }
+}
