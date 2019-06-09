@@ -10,36 +10,81 @@
       <div class="hero">
         <div class="top-container">
           <img src="./images/logo.png" class="logo" alt="" />
-          <div class="side-bar"><i class="fas fa-bars"></i></div>
+          <div class="side-bar"><a class="github" target="_blank" href="<%= landing.githubLink%>"><i class="fab fa-github"></i></a></div>
         </div>
         <div class="content-container">
-          <h1><%= landing.title %></h1>
+          <h1 class="main-title"><%= landing.title %></h1>
           <div class="hero-examples-container">
             <img src="<%= landing.heroImg1%>" alt="configure" />
             <img src="<%= landing.heroImg2%>" alt="results" />
           </div>
           <h3><%= landing.subtitle %></h3>
         </div>
-
+      <div class="download-links"><a class="button">download studio for <i class="fab fa-windows"></i></a>
+        <a class="button">download studio for<br /> <i class="fab fa-apple"></i></a></div>
       </div>
-      <div class="key-features">
-        <% for(let i=0;i<landing.keyFeatures.length;i++){ %>
-        <div class="card">
-          <!--icon-->
-          <i class="<%= landing.keyFeatures[i].icon %>"></i>
-          <h5><%=landing.keyFeatures[i].title%></h5>
-          <p><%= landing.keyFeatures[i].content%></p>
+      <div class="key-features-container">
+        <div class="key-features">
+          <% for(let i=0;i<landing.keyFeatures.length;i++){ %>
+          <div class="card">
+            <!--icon-->
+            <i class="<%= landing.keyFeatures[i].icon %>"></i>
+            <h3><%=landing.keyFeatures[i].title%></h3>
+            <p><%- landing.keyFeatures[i].content%></p>
+            <i class="<%= landing.keyFeatures[i].bottomIcon %>"></i>
+          </div>
+          <% } %>
         </div>
-        <% } %>
       </div>
+
       <div class="other-features">
           <% for(let i=0;i<landing.otherFeatures.length;i++){ %>
               <div class="other-feature">
-                <div><h5><%=landing.otherFeatures[i].title%></h5><p><%=landing.otherFeatures[i].content%></p></div>
-                <img src="<%=landing.otherFeatures[i].img%>" alt="">
+                  
+                <div><h2><%-landing.otherFeatures[i].title%></h2><p><%-landing.otherFeatures[i].content%></p></div>
+                <div class="img-wrapper"><img class="pop-image" src="<%=landing.otherFeatures[i].img%>"  alt="">
+                </div>
               </div>
+              <% if(i != landing.otherFeatures.length-1){ %>
+                <hr />
+              <% } %>
               <% } %>
       </div>
+      <small class="love"><b>made with 🧡 by <a class="tlink" target="_blank" href="https://github.com/chidionuekwusi">Chidi Onuekwusi</a></b></small>
     </div>
+    <script>
+
+    (function(){
+      var classes=document.getElementsByClassName("pop-image");
+    for(let i=0;i<=classes.length-1;i++){
+      classes[i].addEventListener("click",function(e){
+        var curr=classes[i].className.split(" ");
+        var popIndex=curr.indexOf("pop")
+        if(popIndex==-1){
+          classes[i].className+=" pop";
+        }else{
+           curr.splice(popIndex,1);
+           classes[i].className=curr.join(" ");
+        }
+        e.stopPropagation();
+      })
+    }})();
+
+    (function(){
+      document.body.addEventListener("click",function(){
+      var classes=document.getElementsByClassName("pop-image");
+      for(let i=0;i<=classes.length-1;i++){
+      var curr=classes[i].className.split(" ");
+        var popIndex=curr.indexOf("pop");
+        if(popIndex!==-1){
+          curr.splice(popIndex,1);
+           classes[i].className=curr.join(" ");   
+        }
+    
+      }
+    })
+    })()
+
+    </script>
   </body>
 </html>
